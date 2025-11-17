@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SAP HANA VM Security Gap Assessment</title>
+    <style>
+        body { font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background: #f9fbfd; }
+        h1, h2 { color: #1a365d; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #cbd5e0; padding: 12px; text-align: left; }
+        th { background-color: #2b6cb0; color: white; }
+        .high { background-color: #fee; color: #c53030; font-weight: bold; }
+        .medium { background-color: #fff8e1; color: #d88c00; }
+        .low { background-color: #f0fff4; color: #2f855a; }
+        .info { background-color: #ebf8ff; color: #2a4365; }
+        .unknown { background-color: #f7fafc; color: #718096; }
+        pre { background: #2d3748; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; }
+        .summary-box { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 25px; }
+        footer { margin-top: 30px; color: #a0aec0; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+<h1>🛡️ SAP HANA VM Security Gap Assessment</h1>
+<div class='summary-box'>
+    <p><strong>Subscription ID:</strong> 67d249c8-b44c-4285-89ca-6fce5ad74654</p>
+    <p><strong>Assessment Time:</strong> 2025-11-17 09:44</p>
+    <p><strong>Total VMs Scanned:</strong> 18</p>
+    <p><strong>Defender Assessments Loaded:</strong> 281</p>
+</div>
+<h2>🔍 Detailed Findings</h2>
+<table>
+    <tr>
+        <th>VM Name</th>
+        <th>Resource Group</th>
+        <th>Location</th>
+        <th>Size (SAP-Certified?)</th>
+        <th>OS</th>
+        <th>Encryption</th>
+        <th>Backup</th>
+        <th>JIT Enabled</th>
+        <th>NSG Risks</th>
+        <th>Missing Patches</th>
+        <th>Defender Gaps</th>
+        <th>SAP HANA Checks</th>
+    </tr>    <tr>
+        <td>SAPRPPRD</td>
+        <td>RG-SAP-HQ</td>
+        <td>uaenorth</td>
+        <td>Standard_D4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='low'>✅ Enabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sapsrprd</td>
+        <td>RG-SAP-HQ</td>
+        <td>uaenorth</td>
+        <td>Standard_D4s_v3</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sapwdprd</td>
+        <td>RG-SAP-HQ</td>
+        <td>uaenorth</td>
+        <td>Standard_D4s_v3</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>NORDIAJS</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_B2ms</td>
+        <td>Windows</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='low'>✅ None detected</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>⚠️ OS: Windows (not typical for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>⚠️ Accelerated Networking disabled (recommended for HANA)</td>
+    </tr>    <tr>
+        <td>sapcsdev</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E2s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sapcsprd</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sappodev</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sappohanadev</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E16s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sappoprd</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E8s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>✅ Premium SSD used<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sappoqas</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>saps4hdev</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>⚠️ Accelerated Networking disabled (recommended for HANA)</td>
+    </tr>    <tr>
+        <td>SAPS4HPRD</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E8s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>✅ Premium SSD used<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>SAPS4HQAS</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>sapsolprod</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E4s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>✅ Premium SSD used<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>SAPWKS1</td>
+        <td>RG-SAP-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_B2ms</td>
+        <td>Windows</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='low'>✅ None detected</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>⚠️ OS: Windows (not typical for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>⚠️ Accelerated Networking disabled (recommended for HANA)</td>
+    </tr>    <tr>
+        <td>saphanadev</td>
+        <td>RG-SAPDB-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E48_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='low'>✅ Enabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>⚠️ Accelerated Networking disabled (recommended for HANA)</td>
+    </tr>    <tr>
+        <td>SAPHANAPRD</td>
+        <td>RG-SAPDB-S4HQAS</td>
+        <td>uaenorth</td>
+        <td>Standard_E64s_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='medium'>⚠️ Disabled</span></td>
+        <td><span class='unknown'>❓ NSG check failed</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>✅ Premium SSD used<br>✅ Accelerated Networking enabled</td>
+    </tr>    <tr>
+        <td>Zabbix-VM</td>
+        <td>ZABBIX-VM</td>
+        <td>uaenorth</td>
+        <td>Standard_D2as_v5</td>
+        <td>Linux</td>
+        <td><span class='medium'>⚠️ Platform-managed only</span></td>
+        <td><span class='unknown'>❓ Backup check failed</span></td>
+        <td><span class='low'>✅ Enabled</span></td>
+        <td><span class='low'>✅ None detected</span></td>
+        <td><span class='unknown'>❓ Patch query failed</span></td>
+        <td><span class='low'>✅ None</span></td>
+        <td>❌ VM size NOT SAP-certified<br>ℹ️ OS: Linux (expected for HANA)<br>❌ Standard disk used (HANA requires Premium SSD)<br>⚠️ Accelerated Networking disabled (recommended for HANA)</td>
+    </tr></table>
+
+<h2>📌 Notes</h2>
+<div class='summary-box'>
+    <ul>
+        <li><strong>Red (❌)</strong>: High-risk gap – immediate action recommended.</li>
+        <li><strong>Orange (⚠️)</strong>: Medium-risk or deviation from SAP/Azure best practices.</li>
+        <li><strong>Green (✅)</strong>: Compliant or low risk.</li>
+        <li>Assessment uses <strong>Reader role</strong> and <strong>Log Analytics</strong> data only.</li>
+        <li>SAP HANA checks align with <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-vm-operations-storage' target='_blank'>Microsoft SAP HANA on Azure guidance</a>.</li>
+    </ul>
+</div>
+
+<footer>
+    Generated by SAP HANA Gap Assessment Script | 2025-11-17 09:48
+</footer>
+</body>
+</html>
